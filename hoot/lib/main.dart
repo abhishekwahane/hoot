@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:developer';
 import 'package:tflite_audio/tflite_audio.dart';
-import 'package:tflite_audio_example/owlcards.dart';
+import 'package:Hoot/owlcards.dart';
 
 void main() => runApp(MyApp());
 
@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
   Future<Map<dynamic, dynamic>> getResult() async {
     Map<dynamic, dynamic> _result;
     await startAudioRecognition(
-            sampleRate: 16000, recordingLength: 16000, bufferSize: 640)
+            sampleRate: 16000, recordingLength: 16000, bufferSize: 4)
         .then((value) {
       _result = value;
       log(value.toString());

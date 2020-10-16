@@ -10,7 +10,7 @@
     
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="tflite_audio_example"
+        android:label="Hoot"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "example",
+            "name": "hoot",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            // "flutterMode": "profile"
         }
     ]
 }
