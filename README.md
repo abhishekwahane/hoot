@@ -1,15 +1,16 @@
 # hoot
-
 ### Owl Call Recognition
 
-## App
 
-### Flutter
-### TFLite
 
-## Dataset
+### App
 
-### Acquired from Xeno-canto
+- Flutter
+- TFLite
 
-### Each species has 100 1 sec long audio clips of owl calls.
-### All audio is wav format 16000Hz mono audio
+### Dataset
+
+- Acquired from Xeno-canto
+
+- Each species has 100 1 sec long audio clips of owl calls.
+- All audio is wav format 16000Hz mono audio
