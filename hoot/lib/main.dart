@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:tflite_audio/tflite_audio.dart';
 import 'package:Hoot/owlcards.dart';
+import 'package:Hoot/menu.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +25,7 @@ class _MyAppState extends State<MyApp> {
   List<String> labelList = [
     '_silence_',
     '_unknown_',
+    'asianbarredowlet',
     'brownhawkowl',
     'brownwoodowl',
     'eurasianeagleowl',
@@ -39,8 +41,8 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     loadModel(
-        model: 'assets/model.tflite',
-        label: 'assets/labels.txt',
+        model: 'assets/models/model.tflite',
+        label: 'assets/models/labels.txt',
         numThreads: 1,
         isAsset: true);
   }
@@ -59,7 +61,7 @@ class _MyAppState extends State<MyApp> {
   Future<Map<dynamic, dynamic>> getResult() async {
     Map<dynamic, dynamic> _result;
     await startAudioRecognition(
-            sampleRate: 16000, recordingLength: 16000, bufferSize: 4)
+            sampleRate: 16000, recordingLength: 16000, bufferSize: 2)
         .then((value) {
       _result = value;
       log(value.toString());
@@ -87,6 +89,13 @@ class _MyAppState extends State<MyApp> {
         String owlName = 'Oops! No Owl found';
         String owlBio = 'No owl found';
 
+        return [owl, owlName, owlBio];
+        break;
+      case 'asianbarredowlet':
+        String owl = 'asianbarredowlet';
+        String owlName = 'Asian Barred Owlet';
+        String owlBio =
+            'A medium-sized, rotund owl often found during the day on exposed perches such as telephone wires. Brown overall with brown-barred underparts. Similar to Collared Owlet, but Asian Barred lacks false eye spots on the back of the head, has darker brown barring on the sides, and is larger. Calls (a long series of mellow toots) mostly at night, but can often be located during the day by the presence of mobbing songbirds. Found in a wide range of wooded habitats, including large parks and gardens.';
         return [owl, owlName, owlBio];
         break;
       case 'brownhawkowl':
@@ -167,8 +176,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
       key: _scaffoldKey,
-      appBar:
-          AppBar(title: const Text('Hoot'), backgroundColor: Colors.lightGreen),
+      appBar: AppBar(
+        title: const Text('Hoot'),
+        backgroundColor: Colors.lightGreen,
+      ),
       body: FutureBuilder<Map<dynamic, dynamic>>(
           future: result,
           builder: (BuildContext context,
